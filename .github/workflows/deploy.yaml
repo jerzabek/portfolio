@@ -8,14 +8,26 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
+    strategy:
+          matrix:
+            node-version: [13.x]
+
     steps:
       - uses: actions/checkout@v2
-      - name: ssh deploy
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Building assets to be deployed
+        run: |
+          npm ci
+          npm run build --if-present
+      - name: Deploy to Gringo server
         uses: easingthemes/ssh-deploy@v2.1.4
         env:
           SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_KEY }}
           REMOTE_HOST: ${{ secrets.DEPLOY_HOST }}
           REMOTE_USER: ${{ secrets.DEPLOY_USER }}
           REMOTE_PORT: ${{ secrets.DEPLOY_PORT }}
-          SOURCE: "dist/"
+          SOURCE: "build/"
           TARGET: ${{ secrets.DEPLOY_TARGET }}
