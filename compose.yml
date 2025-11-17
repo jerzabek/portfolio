@@ -1,0 +1,9 @@
+services:
+  portfolio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    expose:
+      - 80
+    restart: always
+    container_name: portfolio
