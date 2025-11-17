@@ -1,0 +1,68 @@
+<script lang="ts">
+	import { css } from 'styled-system/css';
+	import type { Project } from '$lib/entities/project';
+
+	interface Props {
+		project: Project;
+	}
+
+	let { project }: Props = $props();
+</script>
+
+<a
+	href={`/projects/${project.slug}`}
+	class={css({
+		display: 'block',
+		bg: 'surface.muted',
+		borderRadius: 'xl',
+		overflow: 'hidden',
+		transition: 'all 0.2s',
+		_hover: {
+			bg: 'surface.subtle'
+		}
+	})}
+>
+	<div
+		class={css({
+			w: '100%',
+			h: '48',
+			bg: 'border',
+			overflow: 'hidden'
+		})}
+	>
+		<img
+			src={project.image}
+			alt={project.title}
+			class={css({
+				w: '100%',
+				h: '100%',
+				objectFit: 'cover',
+				transition: 'transform 0.3s',
+				_hover: {
+					transform: 'scale(1.05)'
+				}
+			})}
+		/>
+	</div>
+	<div class={css({ p: '5' })}>
+		<h3
+			class={css({
+				fontSize: 'lg',
+				fontWeight: 'bold',
+				mb: '2',
+				color: 'text'
+			})}
+		>
+			{project.title}
+		</h3>
+		<p
+			class={css({
+				color: 'text.muted',
+				lineHeight: 'relaxed',
+				fontSize: 'sm'
+			})}
+		>
+			{project.excerpt}
+		</p>
+	</div>
+</a>

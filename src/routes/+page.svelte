@@ -1,7 +1,17 @@
-<script>
-	import { css } from 'styled-system/css';
+<script lang="ts">
+	import About from '$lib/widgets/About.svelte';
+	import Skills from '$lib/widgets/Skills.svelte';
+	import Experience from '$lib/widgets/Experience.svelte';
+	import TechStack from '$lib/widgets/TechStack.svelte';
+	import Projects from '$lib/widgets/Projects.svelte';
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
-<div class={css({ fontSize: '2xl', fontWeight: 'bold' })}>Hello 🐼!</div>
+<svelte:head>
+	<title>Portfolio | Software Engineer</title>
+</svelte:head>
+
+<About />
+<Skills />
+<Experience />
+<TechStack />
+<Projects />
