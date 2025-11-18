@@ -14,7 +14,6 @@
 </svelte:head>
 
 <div class={css({ maxW: '6xl', mx: 'auto', px: '6', py: '12' })}>
-	<!-- Back button -->
 	<a
 		href="/#projects"
 		class={css({
@@ -27,10 +26,9 @@
 			transition: 'color 0.2s'
 		})}
 	>
-		← Back to projects
+		← Back to home
 	</a>
 
-	<!-- Hero Image -->
 	<div
 		class={css({
 			w: '100%',
@@ -48,7 +46,6 @@
 		/>
 	</div>
 
-	<!-- Project Details -->
 	<div class={css({ maxW: '4xl', mx: 'auto' })}>
 		<h1
 			class={css({
@@ -100,14 +97,13 @@
 		</div>
 	</div>
 
-	<!-- Other Projects Section -->
 	{#if otherProjects.length > 0}
 		<div
 			class={css({
 				mt: '20',
 				pt: '12',
-				borderTop: '2px solid',
-				borderColor: 'border'
+				borderTop: '1px solid',
+				borderColor: 'border.muted'
 			})}
 		>
 			<h2

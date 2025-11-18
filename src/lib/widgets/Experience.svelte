@@ -5,32 +5,33 @@
 
 	const experiences: Experience[] = [
 		{
-			id: '1',
 			company: 'Sofascore',
+			image: '/images/sofascore.svg',
 			position: 'Frontend Developer',
 			period: 'Jul 2022 - Present',
-			description: 'React & NextJS used in product development as well as internal applications'
+			description:
+				'Product development, internal tooling, DX improvements, DevOps education, React, Next.js, Typescript'
 		},
 		{
-			id: '2',
 			company: 'Papar',
+			image: '/images/papar.svg',
 			position: 'Fullstack Developer',
 			period: 'Aug 2020 - Oct 2022',
 			description:
-				'HGSPOT webshop development. Comprehensive e-commerce framework rewrite in PHP. Product development and internal company tool development'
+				'HGSPOT webshop development, e-commerce framework rewrite, product development, internal tooling, PHP, MySQL, Javascript'
 		},
 		{
-			id: '3',
 			company: 'Freelance',
 			position: 'Fullstack Developer',
 			period: 'Jul 2018 - Oct 2019',
 			description:
-				'ReactJS front-end for student dorm administration software. Back-end software in Java, Reactor, MySQL deployed on remote VPS'
+				'Student dorm administration software frontend development, introduction to React, Discord bot development managing 400 thousand users, Java, Reactor, MySQL, deployment on VPS'
+			// 'ReactJS front-end for student dorm administration software. Back-end software in Java, Reactor, MySQL deployed on remote VPS'
 		}
 	];
 </script>
 
-<Section title="EXPERIENCE" id="experience">
+<Section title="Experience" id="experience">
 	<div class={css({ display: 'flex', flexDirection: 'column', gap: '4' })}>
 		{#each experiences as exp}
 			<div
@@ -46,14 +47,13 @@
 					}
 				})}
 			>
-				<!-- Icon/Logo placeholder -->
 				<div
 					class={css({
 						w: '12',
 						h: '12',
-						minW: '12',
-						borderRadius: 'lg',
-						bg: 'surface',
+						p: '2',
+						borderRadius: 'sm',
+						bg: exp.image ? '#fff' : 'transparent',
 						display: 'flex',
 						alignItems: 'center',
 						justifyContent: 'center',
@@ -61,7 +61,13 @@
 						color: 'text'
 					})}
 				>
-					{exp.company.charAt(0)}
+					{#if exp.image}
+						<img
+							src={exp.image}
+							alt={exp.company}
+							class={css({ w: '100%', h: '100%', objectFit: 'contain' })}
+						/>
+					{/if}
 				</div>
 
 				<!-- Content -->

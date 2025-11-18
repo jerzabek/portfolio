@@ -1,7 +1,6 @@
-// Types for portfolio data
 export interface Experience {
-	id: string;
 	company: string;
+	image?: string;
 	position: string;
 	period: string;
 	description: string;

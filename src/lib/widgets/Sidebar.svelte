@@ -3,14 +3,15 @@
 	import { Button, ThemeToggle } from '$lib/shared/ui';
 	import { onMount } from 'svelte';
 	import { Spring } from 'svelte/motion';
+	import Icon from '@iconify/svelte';
 
 	const profile = {
 		image: '/images/headshot.webp',
 		name: 'Ivan Jeržabek',
-		title: 'Frontend Developer',
+		title: 'Software engineer',
 		subtitle: 'univ. mag. ing. comp.',
 		location: 'Zagreb, Croatia',
-		website: 'github.com/jerzabek',
+		github: 'github.com/jerzabek',
 		email: 'jerzabek.ivan@gmail.com'
 	};
 
@@ -55,120 +56,138 @@
 	});
 </script>
 
-<aside
+<div
 	class={css({
-		w: '100%',
-		h: { base: 'auto', lg: '100vh' },
-		position: { base: 'relative', lg: 'sticky' },
-		top: 0,
-		pt: { base: '6', lg: '14' },
-		pb: { base: '6', lg: '12' },
-		px: { base: '6', lg: '12' },
+		position: { base: 'relative', md: 'sticky' },
+		top: { md: '0' },
+		h: { md: '100vh' },
 		display: 'flex',
-		flexDirection: 'column',
-		gap: { base: '6', lg: '8' },
-		bg: 'surface',
-		borderBottom: { base: '1px solid', lg: 'none' },
-		borderColor: 'border'
+		alignItems: { md: 'center' }
 	})}
 >
-	<!-- Theme Toggle in top right -->
-	<div
-		class={css({ position: 'absolute', top: '4', right: '4' })}
-		style="opacity: {toggleOpacity.current}; transform: scale({toggleScale.current});"
-	>
-		<ThemeToggle />
-	</div>
-
-	<!-- Mobile: Image and Name side by side, Desktop: Stack vertically -->
-	<div
+	<aside
 		class={css({
+			w: '100%',
+			h: { md: 'fit-content' },
+			pt: { base: '6', md: '14' },
+			px: { base: '6', md: '12' },
+			pb: { base: '6', md: '12' },
 			display: 'flex',
-			flexDirection: { base: 'row', lg: 'column' },
-			gap: { base: '4', lg: '8' },
-			alignItems: { base: 'center', lg: 'flex-start' }
+			flexDirection: 'column',
+			gap: { base: '6', md: '8' },
+			bg: 'surface',
+			borderBottom: { base: '1px solid', md: 'none' },
+			borderColor: 'border',
+			borderRadius: { md: 'lg' },
+			boxShadow: { base: 'sm', md: 'lg' }
 		})}
 	>
-		<!-- Profile Image -->
 		<div
-			class={css({
-				w: { base: '20', lg: '100%' },
-				h: { base: '20', lg: 'auto' },
-				minW: { base: '20', lg: 'auto' },
-				aspectRatio: { base: 'auto', lg: '1 / 1' },
-				borderRadius: '2xl',
-				overflow: 'hidden',
-				bg: 'surface.muted'
-			})}
-			style="opacity: {imageOpacity.current}; transform: scale({imageScale.current});"
+			class={css({ position: 'absolute', top: '4', right: '4' })}
+			style="opacity: {toggleOpacity.current}; transform: scale({toggleScale.current});"
 		>
-			<img
-				src={profile.image}
-				alt={profile.name}
-				class={css({ w: '100%', h: '100%', objectFit: 'cover' })}
-			/>
+			<ThemeToggle />
 		</div>
 
-		<!-- Name and Title -->
 		<div
 			class={css({
 				display: 'flex',
-				flexDirection: 'column',
-				gap: '1',
-				flex: { base: '1', lg: 'initial' }
+				flexDirection: { base: 'row', md: 'column' },
+				gap: { base: '4', md: '8' },
+				alignItems: { base: 'center', md: 'flex-start' }
 			})}
-			style="opacity: {nameOpacity.current}; transform: translateX({nameX.current}px);"
 		>
-			<h1
+			<div
 				class={css({
-					fontSize: { base: 'lg', lg: '2xl' },
-					fontWeight: 'bold',
-					lineHeight: 'tight',
-					color: 'text'
+					w: { base: '20', md: '100%' },
+					h: { base: '20', md: 'auto' },
+					minW: { base: '20', md: 'auto' },
+					aspectRatio: '1 / 1',
+					borderRadius: { base: 'lg', md: '2xl' },
+					overflow: 'hidden',
+					bg: 'surface.muted'
 				})}
+				style="opacity: {imageOpacity.current}; transform: scale({imageScale.current});"
 			>
-				Hello I'm<br />{profile.name}
-			</h1>
-			<p class={css({ fontSize: 'sm', color: 'text.muted', mt: '2' })}>
-				{profile.title}
-			</p>
-		</div>
-	</div>
+				<img
+					src={profile.image}
+					alt={profile.name}
+					class={css({ w: '100%', h: '100%', objectFit: 'cover' })}
+				/>
+			</div>
 
-	<!-- Info List -->
-	<div
-		class={css({
-			display: { base: 'none', lg: 'flex' },
-			flexDirection: 'column',
-			gap: '3',
-			fontSize: 'sm',
-			color: 'text'
-		})}
-		style="opacity: {infoOpacity.current}; transform: translateY({infoY.current}px);"
-	>
-		<div class={css({ display: 'flex', alignItems: 'center', gap: '2' })}>
-			<span class={css({ color: 'text.subtle' })}>📍</span>
-			<span>{profile.location}</span>
+			<!-- Name and Title -->
+			<div
+				class={css({
+					display: 'flex',
+					flexDirection: 'column',
+					gap: '1',
+					flex: { base: '1', md: 'initial' }
+				})}
+				style="opacity: {nameOpacity.current}; transform: translateX({nameX.current}px);"
+			>
+				<h1
+					class={css({
+						fontSize: { base: '2xl', md: '3xl' },
+						fontWeight: 'bold',
+						lineHeight: 'tight',
+						color: 'text'
+					})}
+				>
+					Hello, I am <br class={css({ hideBelow: 'md' })} />{profile.name}
+				</h1>
+				<p class={css({ fontSize: 'sm', color: 'text.muted' })}>
+					{profile.subtitle}
+				</p>
+				<p class={css({ fontSize: 'sm', color: 'text.subtle', mt: '2' })}>
+					{profile.title}
+				</p>
+			</div>
 		</div>
 
-		<div class={css({ display: 'flex', alignItems: 'center', gap: '2' })}>
-			<span class={css({ color: 'text.subtle' })}>🌐</span>
-			<span>{profile.website}</span>
+		<!-- Info List -->
+		<div
+			class={css({
+				display: { base: 'none', md: 'flex' },
+				flexDirection: 'column',
+				gap: '3',
+				fontSize: 'sm',
+				color: 'text'
+			})}
+			style="opacity: {infoOpacity.current}; transform: translateY({infoY.current}px);"
+		>
+			<div class={css({ display: 'flex', alignItems: 'center', gap: '2' })}>
+				<Icon icon="mdi:location-outline" width="20" height="20" color="currentColor" />
+
+				<span>{profile.location}</span>
+			</div>
+
+			<div class={css({ display: 'flex', alignItems: 'center', gap: '2' })}>
+				<Icon icon="mdi:github" width="20" height="20" color="currentColor" />
+
+				<a
+					href={`https://${profile.github}`}
+					class={css({ color: 'text.link', textDecoration: 'underline' })}
+					target="_blank"
+					rel="noopener noreferrer">{profile.github}</a
+				>
+			</div>
+
+			<div class={css({ display: 'flex', alignItems: 'center', gap: '2' })}>
+				<Icon icon="mdi:email-outline" width="20" height="20" color="currentColor" />
+
+				<span>{profile.email}</span>
+			</div>
 		</div>
 
-		<div class={css({ display: 'flex', alignItems: 'center', gap: '2' })}>
-			<span class={css({ color: 'text.subtle' })}>✉️</span>
-			<span>{profile.email}</span>
+		<!-- Action Buttons -->
+		<div
+			class={css({
+				mt: { base: '0', md: 'auto' }
+			})}
+			style="opacity: {buttonOpacity.current}; transform: translateY({buttonY.current}px);"
+		>
+			<Button variant="filled" href={`mailto:${profile.email}`}>Contact Me</Button>
 		</div>
-	</div>
-
-	<!-- Action Buttons -->
-	<div
-		class={css({
-			mt: { base: '0', lg: 'auto' }
-		})}
-		style="opacity: {buttonOpacity.current}; transform: translateY({buttonY.current}px);"
-	>
-		<Button variant="filled" href={`mailto:${profile.email}`}>Contact Me</Button>
-	</div>
-</aside>
+	</aside>
+</div>

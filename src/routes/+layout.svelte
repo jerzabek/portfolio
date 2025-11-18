@@ -20,7 +20,7 @@
 		<div
 			class={css({
 				display: 'grid',
-				gridTemplateColumns: { base: '1fr', lg: '1fr 3fr' },
+				gridTemplateColumns: { base: '1fr', md: '1fr 3fr' },
 				minH: '100vh'
 			})}
 		>

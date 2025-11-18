@@ -7,7 +7,6 @@
 	}
 
 	let { project }: Props = $props();
-	let isHovered = $state(false);
 </script>
 
 <a
@@ -24,8 +23,6 @@
 			transform: 'translateY(-8px)'
 		}
 	})}
-	onmouseenter={() => (isHovered = true)}
-	onmouseleave={() => (isHovered = false)}
 >
 	<div
 		class={css({

@@ -10,37 +10,18 @@
 		{ name: 'PHP', category: 'frontend' },
 		{ name: 'React', category: 'frontend' },
 		{ name: 'Next.js', category: 'frontend' },
-		{ name: 'Bootstrap', category: 'frontend' },
-		{ name: 'LESS', category: 'frontend' },
 		{ name: 'Java', category: 'backend' },
-		{ name: 'Spring Boot', category: 'backend' },
 		{ name: 'MySQL', category: 'backend' },
 		{ name: 'PostgreSQL', category: 'backend' },
 		{ name: 'Linux', category: 'devops' },
 		{ name: 'Docker', category: 'devops' },
-		{ name: 'Docker Compose', category: 'devops' },
-		{ name: 'Bash', category: 'tools' },
-		{ name: 'Ruby on Rails', category: 'tools' },
+		{ name: 'Shell terminal', category: 'tools' },
 		{ name: 'Python', category: 'tools' },
 		{ name: 'Git', category: 'tools' }
 	];
-
-	const categories = {
-		frontend: 'Frontend',
-		backend: 'Backend',
-		devops: 'DevOps',
-		tools: 'Tools'
-	};
-
-	const categoryColors = {
-		frontend: 'blue',
-		backend: 'green',
-		devops: 'purple',
-		tools: 'orange'
-	};
 </script>
 
-<Section title="SKILLS" id="skills">
+<Section title="Skills" id="skills">
 	<div
 		class={css({
 			display: 'flex',

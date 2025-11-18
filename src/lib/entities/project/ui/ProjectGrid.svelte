@@ -22,7 +22,6 @@
 	}));
 
 	onMount(() => {
-		// Trigger animations
 		projects.forEach((_, i) => {
 			setTimeout(() => {
 				cardStates[i].opacity.set(1);
@@ -35,7 +34,7 @@
 <div
 	class={css({
 		display: 'grid',
-		gridTemplateColumns: { base: '1fr', md: 'repeat(3, 1fr)' },
+		gridTemplateColumns: { base: '1fr', md: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' },
 		gap: '4'
 	})}
 >
