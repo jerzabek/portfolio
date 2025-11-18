@@ -12,12 +12,18 @@
 		})}
 	>
 		<p class={css({ mb: '4' })}>
-			I am a passionate software engineer specializing in frontend development and DevOps practices.
-			I love building beautiful, performant web applications and streamlining deployment processes.
+			I am a Frontend Developer at Sofascore with a Master's degree in Computing from the University
+			of Zagreb, Faculty of Electrical Engineering and Computing. I specialize in React and Next.js
+			development for both product and internal applications.
 		</p>
 		<p class={css({ mb: '4' })}>
-			With over 5 years of experience in creating visually stunning and user-centric websites, I've
-			honed my skills in both front-end and back-end development.
+			With experience spanning fullstack development, e-commerce frameworks, and system
+			administration software, I've worked with technologies including React, Next.js, TypeScript,
+			Java, PHP, and various DevOps tools. I'm passionate about building efficient, user-friendly
+			web applications.
+		</p>
+		<p class={css({ mb: '4' })}>
+			Gold and silver medalist at 2019 INOVA Zagreb, ranked 4th place at WorldSkills Croatia 2019.
 		</p>
 	</div>
 </Section>

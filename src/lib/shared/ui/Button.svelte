@@ -17,29 +17,31 @@
 		borderRadius: 'md',
 		fontWeight: 'medium',
 		cursor: 'pointer',
-		transition: 'all 0.2s',
 		display: 'inline-block',
 		textDecoration: 'none',
 		border: '2px solid',
-		fontSize: 'sm'
+		fontSize: 'sm',
+		w: '100%',
+		textAlign: 'center',
+		transition: 'all {durations.normal}',
+		_hover: {
+			transform: 'scale(1.02)'
+		},
+		_active: {
+			transform: 'scale(0.98)'
+		}
 	});
 
 	const filledStyles = css({
 		bg: 'text',
 		color: 'surface',
-		borderColor: 'text',
-		_hover: {
-			opacity: 0.9
-		}
+		borderColor: 'text'
 	});
 
 	const outlineStyles = css({
 		bg: 'transparent',
 		color: 'text',
-		borderColor: 'text',
-		_hover: {
-			bg: 'surface.muted'
-		}
+		borderColor: 'text'
 	});
 
 	const buttonClass = `${baseStyles} ${variant === 'filled' ? filledStyles : outlineStyles}`;

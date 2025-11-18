@@ -7,6 +7,7 @@
 	}
 
 	let { project }: Props = $props();
+	let isHovered = $state(false);
 </script>
 
 <a
@@ -16,11 +17,15 @@
 		bg: 'surface.muted',
 		borderRadius: 'xl',
 		overflow: 'hidden',
-		transition: 'all 0.2s',
+		transition: 'all {durations.slow}',
+		transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
 		_hover: {
-			bg: 'surface.subtle'
+			bg: 'surface.subtle',
+			transform: 'translateY(-8px)'
 		}
 	})}
+	onmouseenter={() => (isHovered = true)}
+	onmouseleave={() => (isHovered = false)}
 >
 	<div
 		class={css({
@@ -37,7 +42,8 @@
 				w: '100%',
 				h: '100%',
 				objectFit: 'cover',
-				transition: 'transform 0.3s',
+				transition: 'transform {durations.slow}',
+				transitionTimingFunction: 'ease-out',
 				_hover: {
 					transform: 'scale(1.05)'
 				}

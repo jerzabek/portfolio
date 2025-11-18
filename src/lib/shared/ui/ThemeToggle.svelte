@@ -16,7 +16,7 @@
 		border: 'none',
 		cursor: 'pointer',
 		fontSize: 'lg',
-		transition: 'all 0.2s',
+		transition: 'all {durations.normal}',
 		_hover: {
 			bg: 'surface.subtle',
 			transform: 'scale(1.1)'

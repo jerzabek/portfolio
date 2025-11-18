@@ -4,6 +4,7 @@
 	import { container } from 'styled-system/patterns';
 	import favicon from '$lib/assets/favicon.svg';
 	import Sidebar from '$lib/widgets/Sidebar.svelte';
+	import { CustomCursor } from '$lib/shared/ui';
 
 	let { children } = $props();
 </script>
@@ -12,12 +13,14 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
+<CustomCursor />
+
 <div class={css({ bg: 'bg', minH: '100vh' })}>
-	<div class={container()}>
+	<div class={container({ px: '0' })}>
 		<div
 			class={css({
 				display: 'grid',
-				gridTemplateColumns: { base: '1', lg: '1fr 3fr' },
+				gridTemplateColumns: { base: '1fr', lg: '1fr 3fr' },
 				minH: '100vh'
 			})}
 		>

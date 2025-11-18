@@ -6,27 +6,26 @@
 	const experiences: Experience[] = [
 		{
 			id: '1',
-			company: 'Tech Company Inc.',
-			position: 'Senior Frontend Developer',
-			period: '2022 - Present',
-			description:
-				'Leading frontend development initiatives, mentoring junior developers, and implementing modern web technologies to improve user experience and application performance.'
+			company: 'Sofascore',
+			position: 'Frontend Developer',
+			period: 'Jul 2022 - Present',
+			description: 'React & NextJS used in product development as well as internal applications'
 		},
 		{
 			id: '2',
-			company: 'StartUp Solutions',
-			position: 'Full Stack Developer',
-			period: '2020 - 2022',
+			company: 'Papar',
+			position: 'Fullstack Developer',
+			period: 'Aug 2020 - Oct 2022',
 			description:
-				'Developed and maintained multiple web applications using React and Node.js. Implemented CI/CD pipelines and containerized applications using Docker.'
+				'HGSPOT webshop development. Comprehensive e-commerce framework rewrite in PHP. Product development and internal company tool development'
 		},
 		{
 			id: '3',
-			company: 'Digital Agency',
-			position: 'Frontend Developer',
-			period: '2018 - 2020',
+			company: 'Freelance',
+			position: 'Fullstack Developer',
+			period: 'Jul 2018 - Oct 2019',
 			description:
-				'Built responsive websites and web applications for various clients. Collaborated with designers and backend developers to deliver high-quality products.'
+				'ReactJS front-end for student dorm administration software. Back-end software in Java, Reactor, MySQL deployed on remote VPS'
 		}
 	];
 </script>
