@@ -7,3 +7,17 @@ services:
       - 80
     restart: always
     container_name: portfolio
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.portfolio.rule=Host(`jarza.cc`)'
+      - 'traefik.http.routers.portfolio.entrypoints=websecure'
+      - 'traefik.http.routers.portfolio.tls=true'
+      - 'traefik.http.routers.portfolio.tls.certresolver=letsencrypt'
+      - 'traefik.http.services.portfolio.loadbalancer.server.port=80'
+    networks:
+      - webproxy
+
+networks:
+  webproxy:
+    name: traefik_webproxy
+    external: true
