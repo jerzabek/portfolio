@@ -16,3 +16,4 @@ dist
 coverage
 .cache
 styled-system 
+/.svelte-kit
