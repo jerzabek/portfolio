@@ -4,6 +4,7 @@
 	import { onMount } from 'svelte';
 	import { Spring } from 'svelte/motion';
 	import Icon from '@iconify/svelte';
+	import { token } from 'styled-system/tokens';
 
 	const profile = {
 		image: '/images/headshot.webp',
@@ -15,7 +16,9 @@
 		email: 'jerzabek.ivan@gmail.com'
 	};
 
-	// Animation stores
+	let isCompact = false;
+	let mediaQuery: MediaQueryList;
+
 	const toggleOpacity = new Spring(0, { stiffness: 0.05, damping: 0.6 });
 	const toggleScale = new Spring(0, { stiffness: 0.05, damping: 0.6 });
 	const imageOpacity = new Spring(0, { stiffness: 0.05, damping: 0.6 });
@@ -27,8 +30,45 @@
 	const buttonOpacity = new Spring(0, { stiffness: 0.05, damping: 0.6 });
 	const buttonY = new Spring(20, { stiffness: 0.05, damping: 0.6 });
 
+	const compactTitleOpacity = new Spring(1, { stiffness: 0.1, damping: 0.8 });
+	const compactTitleScale = new Spring(1, { stiffness: 0.1, damping: 0.8 });
+	const compactImageScale = new Spring(1, { stiffness: 0.1, damping: 0.8 });
+
+	const SCROLL_THRESHOLD_DOWN = 240;
+	const SCROLL_THRESHOLD_UP = 40;
+
+	const handleScroll = () => {
+		if (mediaQuery && mediaQuery.matches) {
+			isCompact = false;
+			compactTitleOpacity.set(1);
+			compactTitleScale.set(1);
+			compactImageScale.set(1);
+			return;
+		}
+
+		const scrollY = window.scrollY;
+
+		const shouldBeCompact = isCompact
+			? scrollY > SCROLL_THRESHOLD_UP
+			: scrollY > SCROLL_THRESHOLD_DOWN;
+
+		if (shouldBeCompact !== isCompact) {
+			isCompact = shouldBeCompact;
+			if (isCompact) {
+				compactTitleOpacity.set(0);
+				compactTitleScale.set(0.95);
+				compactImageScale.set(0.5);
+			} else {
+				compactTitleOpacity.set(1);
+				compactTitleScale.set(1);
+				compactImageScale.set(1);
+			}
+		}
+	};
+
 	onMount(() => {
-		// Stagger the animations
+		mediaQuery = window.matchMedia(`(min-width: ${token('breakpoints.md')})`);
+
 		setTimeout(() => {
 			imageOpacity.set(1);
 			imageScale.set(1);
@@ -53,16 +93,24 @@
 			toggleOpacity.set(1);
 			toggleScale.set(1);
 		}, 900);
+
+		window.addEventListener('scroll', handleScroll);
+		handleScroll();
+
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+		};
 	});
 </script>
 
 <div
 	class={css({
-		position: { base: 'relative', md: 'sticky' },
-		top: { md: '0' },
+		position: 'sticky',
+		top: '0',
 		h: { md: '100vh' },
 		display: 'flex',
-		alignItems: { md: 'center' }
+		alignItems: { md: 'center' },
+		zIndex: 10
 	})}
 >
 	<aside
@@ -70,15 +118,18 @@
 			position: 'relative',
 			w: '100%',
 			h: { md: 'fit-content' },
-			p: { base: '4', md: '8' },
+			p: { base: isCompact ? '2' : '4', md: '8' },
 			display: 'flex',
 			flexDirection: 'column',
-			gap: { base: '6', md: '8' },
+			gap: { base: isCompact ? '2' : '4', md: '8' },
 			bg: 'surface',
 			borderBottom: { base: '1px solid', md: 'none' },
 			borderColor: 'border',
 			borderRadius: { md: '2xl' },
-			boxShadow: { base: 'sm', md: 'lg' }
+			boxShadow: { base: 'sm', md: 'lg' },
+			transitionProperty: 'all',
+			transitionDuration: 'fastest',
+			transitionTimingFunction: 'ease-out'
 		})}
 	>
 		<div
@@ -86,20 +137,27 @@
 				display: 'flex',
 				flexDirection: { base: 'row', md: 'column' },
 				gap: { base: '4', md: '8' },
-				alignItems: { base: 'center', md: 'flex-start' }
+				alignItems: { base: 'center', md: 'flex-start' },
+				transitionProperty: 'all',
+				transitionDuration: 'fastest',
+				transitionTimingFunction: 'ease-out',
+				h: { md: 'auto' }
 			})}
 		>
 			<div
 				class={css({
-					w: { base: '20', md: '100%' },
-					h: { base: '20', md: 'auto' },
-					minW: { base: '20', md: 'auto' },
 					aspectRatio: '1 / 1',
 					borderRadius: { base: 'lg', md: 'xl' },
 					overflow: 'hidden',
-					bg: 'surface.muted'
+					bg: 'surface.muted',
+					transitionProperty: 'all',
+					transitionDuration: 'fastest',
+					transitionTimingFunction: 'ease-out',
+					w: { md: '100%' },
+					h: { md: 'auto' }
 				})}
-				style="opacity: {imageOpacity.current}; transform: scale({imageScale.current});"
+				style="opacity: {imageOpacity.current * imageScale.current}; width: {80 *
+					compactImageScale.current}px; height: {80 * compactImageScale.current}px;"
 			>
 				<img
 					src={profile.image}
@@ -108,12 +166,10 @@
 				/>
 			</div>
 
-			<!-- Name and Title -->
 			<div
 				class={css({
 					display: 'flex',
 					flexDirection: 'column',
-					gap: '1',
 					flex: { base: '1', md: 'initial' }
 				})}
 				style="opacity: {nameOpacity.current}; transform: translateX({nameX.current}px);"
@@ -128,19 +184,44 @@
 				>
 					Hello, I am <br class={css({ hideBelow: 'md' })} />{profile.name}
 				</h1>
-				<p class={css({ fontSize: 'sm', color: 'text.muted' })}>
-					{profile.subtitle}
-				</p>
-				<p class={css({ fontSize: 'sm', color: 'text.subtle', mt: '2' })}>
-					{profile.title}
-				</p>
+				<div
+					class={css({
+						overflow: 'hidden',
+						transitionProperty: 'all',
+						transitionDuration: 'fast',
+						transitionTimingFunction: 'ease-out',
+						h: { md: 'auto' },
+						opacity: { md: '1' }
+					})}
+					style="height: {compactTitleOpacity.current *
+						60}px; opacity: {compactTitleOpacity.current};"
+				>
+					<p
+						class={css({
+							fontSize: 'sm',
+							color: 'text.muted',
+							mt: '1'
+						})}
+					>
+						{profile.subtitle}
+					</p>
+					<p
+						class={css({
+							fontSize: 'sm',
+							color: 'text.subtle',
+							mt: '2'
+						})}
+					>
+						{profile.title}
+					</p>
+				</div>
 			</div>
 		</div>
 
 		<div
 			class={css({
 				position: 'absolute',
-				top: { base: '4', md: '-12' },
+				top: { base: '2', md: '-12' },
 				right: { base: '4', md: '0' }
 			})}
 			style="opacity: {toggleOpacity.current}; transform: scale({toggleScale.current});"
@@ -148,7 +229,6 @@
 			<ThemeToggle />
 		</div>
 
-		<!-- Info List -->
 		<div
 			class={css({
 				display: { base: 'none', md: 'flex' },
@@ -183,10 +263,12 @@
 			</div>
 		</div>
 
-		<!-- Action Buttons -->
 		<div
 			class={css({
-				mt: { base: '0', md: 'auto' }
+				mt: { base: '0', md: 'auto' },
+				transitionProperty: 'all',
+				transitionDuration: 'fastest',
+				transitionTimingFunction: 'ease-out'
 			})}
 			style="opacity: {buttonOpacity.current}; transform: translateY({buttonY.current}px);"
 		>

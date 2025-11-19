@@ -1,1 +1,17 @@
 @layer reset, base, tokens, recipes, utilities;
+
+:root {
+	--vh: 1vh;
+}
+
+@supports (height: 100dvh) {
+	:root {
+		--vh: 1dvh;
+	}
+}
+
+html,
+body {
+	min-height: 100vh;
+	min-height: calc(var(--vh, 1vh) * 100);
+}
