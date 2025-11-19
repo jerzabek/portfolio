@@ -1,7 +1,7 @@
 import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
 
-// Check for saved theme preference or default to 'light'
+/** Check for saved theme preference or default to 'light' */
 const getInitialTheme = (): 'light' | 'dark' => {
 	if (!browser) return 'light';
 
@@ -19,7 +19,7 @@ const getInitialTheme = (): 'light' | 'dark' => {
 
 export const theme = writable<'light' | 'dark'>(getInitialTheme());
 
-// Subscribe to theme changes and update localStorage and document class
+/** Subscribe to theme changes and update localStorage and document class */
 if (browser) {
 	theme.subscribe((value) => {
 		localStorage.setItem('theme', value);

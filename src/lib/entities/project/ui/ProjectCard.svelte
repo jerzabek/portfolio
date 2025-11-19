@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { css } from 'styled-system/css';
+	import { css, cx } from 'styled-system/css';
 	import type { Project } from '$lib/entities/project';
 
 	interface Props {
@@ -11,18 +11,21 @@
 
 <a
 	href={`/projects/${project.slug}`}
-	class={css({
-		display: 'block',
-		bg: 'surface.muted',
-		borderRadius: 'xl',
-		overflow: 'hidden',
-		transition: 'all {durations.slow}',
-		transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
-		_hover: {
-			bg: 'surface.subtle',
-			transform: 'translateY(-8px)'
-		}
-	})}
+	class={cx(
+		'group',
+		css({
+			display: 'block',
+			bg: 'surface.muted',
+			borderRadius: 'xl',
+			overflow: 'hidden',
+			transition: 'all {durations.slow}',
+			transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
+			_hover: {
+				bg: 'surface.subtle',
+				transform: 'translateY(-8px)'
+			}
+		})
+	)}
 >
 	<div
 		class={css({
@@ -41,7 +44,7 @@
 				objectFit: 'cover',
 				transition: 'transform {durations.slow}',
 				transitionTimingFunction: 'ease-out',
-				_hover: {
+				_groupHover: {
 					transform: 'scale(1.05)'
 				}
 			})}

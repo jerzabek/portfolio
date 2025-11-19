@@ -13,7 +13,7 @@
 	<title>{project.title} | By Ivan Jeržabek</title>
 </svelte:head>
 
-<div class={css({ maxW: '6xl', mx: 'auto', px: '6', py: '12' })}>
+<div class={css({ maxW: '6xl', mx: 'auto', py: '6' })}>
 	<a
 		href="/#projects"
 		class={css({

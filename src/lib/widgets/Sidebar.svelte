@@ -82,7 +82,11 @@
 		})}
 	>
 		<div
-			class={css({ position: 'absolute', top: '-12', right: '0' })}
+			class={css({
+				position: 'absolute',
+				top: { base: '4', md: '-12' },
+				right: { base: '4', md: '0' }
+			})}
 			style="opacity: {toggleOpacity.current}; transform: scale({toggleScale.current});"
 		>
 			<ThemeToggle />
