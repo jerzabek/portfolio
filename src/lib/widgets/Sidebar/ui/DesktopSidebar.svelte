@@ -53,8 +53,7 @@
 		height: '100vh',
 		maxHeight: '100vh',
 		display: 'flex',
-		alignItems: 'center',
-		overflow: 'hidden'
+		alignItems: 'center'
 	})}
 >
 	<aside
