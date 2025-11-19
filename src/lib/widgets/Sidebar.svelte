@@ -83,17 +83,6 @@
 	>
 		<div
 			class={css({
-				position: 'absolute',
-				top: { base: '4', md: '-12' },
-				right: { base: '4', md: '0' }
-			})}
-			style="opacity: {toggleOpacity.current}; transform: scale({toggleScale.current});"
-		>
-			<ThemeToggle />
-		</div>
-
-		<div
-			class={css({
 				display: 'flex',
 				flexDirection: { base: 'row', md: 'column' },
 				gap: { base: '4', md: '8' },
@@ -146,6 +135,17 @@
 					{profile.title}
 				</p>
 			</div>
+		</div>
+
+		<div
+			class={css({
+				position: 'absolute',
+				top: { base: '4', md: '-12' },
+				right: { base: '4', md: '0' }
+			})}
+			style="opacity: {toggleOpacity.current}; transform: scale({toggleScale.current});"
+		>
+			<ThemeToggle />
 		</div>
 
 		<!-- Info List -->
