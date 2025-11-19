@@ -144,7 +144,7 @@
 						color: 'text'
 					})}
 				>
-					Hello, I am {profile.name}
+					{profile.name}
 				</h1>
 				<div
 					class={css({
