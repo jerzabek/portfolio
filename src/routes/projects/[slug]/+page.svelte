@@ -46,7 +46,7 @@
 		/>
 	</div>
 
-	<div class={css({ maxW: '4xl', mx: 'auto' })}>
+	<article class={css({ maxW: '4xl', mx: 'auto' })}>
 		<h1
 			class={css({
 				fontSize: '4xl',
@@ -58,33 +58,6 @@
 			{project.title}
 		</h1>
 
-		{#if project.technologies}
-			<div
-				class={css({
-					display: 'flex',
-					flexWrap: 'wrap',
-					gap: '2',
-					mb: '8'
-				})}
-			>
-				{#each project.technologies as tech}
-					<span
-						class={css({
-							px: '3',
-							py: '1',
-							bg: 'surface.muted',
-							color: 'text',
-							fontSize: 'sm',
-							borderRadius: 'full',
-							fontWeight: 'medium'
-						})}
-					>
-						{tech}
-					</span>
-				{/each}
-			</div>
-		{/if}
-
 		<div
 			class={css({
 				fontSize: 'lg',
@@ -93,9 +66,9 @@
 				mb: '12'
 			})}
 		>
-			<p>{project.description || project.excerpt}</p>
+			<project.description />
 		</div>
-	</div>
+	</article>
 
 	{#if otherProjects.length > 0}
 		<div

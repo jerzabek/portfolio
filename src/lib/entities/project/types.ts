@@ -1,3 +1,5 @@
+import type { Component } from 'svelte';
+
 export interface Experience {
 	company: string;
 	image?: string;
@@ -12,8 +14,7 @@ export interface Project {
 	excerpt: string;
 	image: string;
 	slug: string;
-	description?: string;
-	technologies?: string[];
+	description: Component;
 }
 
 export interface Skill {
