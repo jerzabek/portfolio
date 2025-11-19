@@ -1,5 +1,7 @@
 <script>
 	import { css } from 'styled-system/css';
+
+	const diagramImageStyles = css({ mx: 'auto', maxWidth: '700px', width: '100%', height: 'auto' });
 </script>
 
 <div
@@ -35,11 +37,15 @@
 		this:
 	</p>
 
-	<div>
+	<div class={css({ _dark: { display: 'none' } })}>
+		<img src="/images/vps-diagram.webp" alt="Self managed VPS diagram" class={diagramImageStyles} />
+	</div>
+
+	<div class={css({ display: 'none', _dark: { display: 'block' } })}>
 		<img
-			src="/images/vps-diagram.webp"
+			src="/images/vps-diagram-dark.webp"
 			alt="Self managed VPS diagram"
-			class={css({ mx: 'auto', maxWidth: '700px', width: '100%', height: 'auto' })}
+			class={diagramImageStyles}
 		/>
 	</div>
 
