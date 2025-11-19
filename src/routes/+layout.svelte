@@ -3,7 +3,7 @@
 	import { css } from 'styled-system/css';
 	import { container } from 'styled-system/patterns';
 	import favicon from '$lib/assets/favicon.svg';
-	import Sidebar from '$lib/widgets/Sidebar.svelte';
+	import { Sidebar } from '$lib/widgets/Sidebar';
 	import { CustomCursor } from '$lib/shared/ui';
 
 	let { children } = $props();

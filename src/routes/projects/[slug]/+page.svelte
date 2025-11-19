@@ -106,8 +106,7 @@
 			class={css({
 				mt: '20',
 				pt: '12',
-				borderTop: '1px solid',
-				borderColor: 'border.muted'
+				borderTop: '1px solid {colors.border}'
 			})}
 		>
 			<h2
