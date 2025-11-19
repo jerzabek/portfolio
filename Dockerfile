@@ -26,4 +26,4 @@ COPY serve.json ./
 
 EXPOSE 80
 
-CMD ["serve", "-s", "build", "-l", "80"]
+CMD ["serve", "build", "-l", "80"]
