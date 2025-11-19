@@ -7,7 +7,7 @@ export const projects: Project[] = [
 		slug: 'portfolio',
 		title: 'Portfolio Website',
 		excerpt: 'Fun opportunity to try out SvelteKit and build a personal portfolio site.',
-		image: 'https://picsum.photos/800/600?random=1',
+		image: '/images/projects/portfolio-cover.webp',
 		description: PortfolioProjectsDescription
 	}
 ];

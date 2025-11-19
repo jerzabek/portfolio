@@ -22,7 +22,7 @@
 		<p>
 			I hold a master's degree from the University of Zagreb in the science of computing and have
 			been working in the software industry since my late teens, showing interest in programming
-			since the age of 12.
+			since my earliest teens.
 		</p>
 		<p>
 			Throughout both my professional, academic and personal projects I have worked on every aspect
