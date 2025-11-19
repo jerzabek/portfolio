@@ -8,6 +8,8 @@ export const projects: Project[] = [
 		title: 'Portfolio Website',
 		excerpt: 'Fun opportunity to try out SvelteKit and build a personal portfolio site.',
 		image: '/images/projects/portfolio-cover.webp',
+		imageAttribution:
+			'Photo by Matheus Bertelli: https://www.pexels.com/photo/photo-of-a-man-holding-video-camera-2608519/',
 		description: PortfolioProjectsDescription
 	}
 ];

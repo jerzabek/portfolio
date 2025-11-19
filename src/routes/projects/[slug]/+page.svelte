@@ -10,7 +10,7 @@
 </script>
 
 <svelte:head>
-	<title>{project.title} | Portfolio</title>
+	<title>{project.title} | By Ivan Jeržabek</title>
 </svelte:head>
 
 <div class={css({ maxW: '6xl', mx: 'auto', px: '6', py: '12' })}>
@@ -29,21 +29,23 @@
 		← Back to home
 	</a>
 
-	<div
-		class={css({
-			w: '100%',
-			h: '96',
-			borderRadius: 'xl',
-			overflow: 'hidden',
-			mb: '12',
-			boxShadow: 'xl'
-		})}
-	>
-		<img
-			src={project.image}
-			alt={project.title}
-			class={css({ w: '100%', h: '100%', objectFit: 'cover' })}
-		/>
+	<div class={css({})}>
+		<div
+			class={css({
+				w: '100%',
+				h: '96',
+				mb: '12',
+				overflow: 'hidden',
+				borderRadius: 'xl',
+				boxShadow: 'xl'
+			})}
+		>
+			<img
+				src={project.image}
+				alt={project.title}
+				class={css({ w: '100%', h: '100%', objectFit: 'cover' })}
+			/>
+		</div>
 	</div>
 
 	<article class={css({ maxW: '4xl', mx: 'auto' })}>
@@ -69,6 +71,19 @@
 			<project.description />
 		</div>
 	</article>
+
+	{#if typeof project.imageAttribution === 'string'}
+		<div class={css({ width: '100%', textAlign: 'end' })}>
+			<p
+				class={css({
+					color: 'text.subtle',
+					fontSize: 'xs'
+				})}
+			>
+				{project.imageAttribution}
+			</p>
+		</div>
+	{/if}
 
 	{#if otherProjects.length > 0}
 		<div

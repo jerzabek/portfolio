@@ -13,6 +13,7 @@ export interface Project {
 	title: string;
 	excerpt: string;
 	image: string;
+	imageAttribution?: string;
 	slug: string;
 	description: Component;
 }
