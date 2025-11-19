@@ -1,5 +1,5 @@
 import { error } from '@sveltejs/kit';
-import { getProjectBySlug } from '$lib/entities/project';
+import { getProjectBySlug, projects } from '$lib/entities/project';
 import type { PageLoad } from './$types';
 
 export const load: PageLoad = ({ params }) => {
@@ -13,3 +13,9 @@ export const load: PageLoad = ({ params }) => {
 		project
 	};
 };
+
+export function entries() {
+	return projects.map((project) => ({
+		slug: project.slug
+	}));
+}
