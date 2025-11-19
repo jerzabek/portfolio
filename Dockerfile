@@ -22,6 +22,7 @@ WORKDIR /app
 RUN npm install -g serve
 
 COPY --from=builder /app/build ./build
+COPY serve.json ./
 
 EXPOSE 80
 
