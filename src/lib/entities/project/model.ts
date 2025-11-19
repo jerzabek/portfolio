@@ -1,6 +1,6 @@
 import type { Project } from './types';
 import VpsProjectsDescription from './ui/descriptions/VpsProjectsDescription.svelte';
-import PortfolioProjectsDescription from './ui/descriptions/VpsProjectsDescription.svelte';
+import PortfolioProjectsDescription from './ui/descriptions/PortfolioProjectsDescription.svelte';
 
 export const projects: Project[] = [
 	{

@@ -5,9 +5,9 @@
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
-	const { project } = data;
-	const otherProjects = getOtherProjects(project.slug);
-	const pageTitle = `${project.title} | By Ivan Jeržabek`;
+	const project = $derived(data.project);
+	const otherProjects = $derived(getOtherProjects(project.slug));
+	const pageTitle = $derived(`${project.title} | By Ivan Jeržabek`);
 </script>
 
 <svelte:head>
