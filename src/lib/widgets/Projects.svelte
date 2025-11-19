@@ -4,6 +4,6 @@
 	import { ProjectGrid } from '$lib/entities/project/ui';
 </script>
 
-<Section title="PROJECTS" id="projects">
+<Section title="Projects" id="projects">
 	<ProjectGrid {projects} />
 </Section>

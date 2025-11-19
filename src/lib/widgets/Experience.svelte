@@ -26,7 +26,6 @@
 			period: 'Jul 2018 - Oct 2019',
 			description:
 				'Student dorm administration software frontend development, introduction to React, Discord bot development managing 400 thousand users, Java, Reactor, MySQL, deployment on VPS'
-			// 'ReactJS front-end for student dorm administration software. Back-end software in Java, Reactor, MySQL deployed on remote VPS'
 		}
 	];
 </script>
@@ -70,7 +69,6 @@
 					{/if}
 				</div>
 
-				<!-- Content -->
 				<div class={css({ flex: '1' })}>
 					<div
 						class={css({

@@ -67,23 +67,22 @@
 >
 	<aside
 		class={css({
+			position: 'relative',
 			w: '100%',
 			h: { md: 'fit-content' },
-			pt: { base: '6', md: '14' },
-			px: { base: '6', md: '12' },
-			pb: { base: '6', md: '12' },
+			p: { base: '4', md: '8' },
 			display: 'flex',
 			flexDirection: 'column',
 			gap: { base: '6', md: '8' },
 			bg: 'surface',
 			borderBottom: { base: '1px solid', md: 'none' },
 			borderColor: 'border',
-			borderRadius: { md: 'lg' },
+			borderRadius: { md: '2xl' },
 			boxShadow: { base: 'sm', md: 'lg' }
 		})}
 	>
 		<div
-			class={css({ position: 'absolute', top: '4', right: '4' })}
+			class={css({ position: 'absolute', top: '-12', right: '0' })}
 			style="opacity: {toggleOpacity.current}; transform: scale({toggleScale.current});"
 		>
 			<ThemeToggle />
@@ -103,7 +102,7 @@
 					h: { base: '20', md: 'auto' },
 					minW: { base: '20', md: 'auto' },
 					aspectRatio: '1 / 1',
-					borderRadius: { base: 'lg', md: '2xl' },
+					borderRadius: { base: 'lg', md: 'xl' },
 					overflow: 'hidden',
 					bg: 'surface.muted'
 				})}

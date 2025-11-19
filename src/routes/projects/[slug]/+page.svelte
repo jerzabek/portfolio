@@ -49,7 +49,7 @@
 	</div>
 
 	<article class={css({ maxW: '4xl', mx: 'auto' })}>
-		<h1
+		<h2
 			class={css({
 				fontSize: '4xl',
 				fontWeight: 'bold',
@@ -58,7 +58,7 @@
 			})}
 		>
 			{project.title}
-		</h1>
+		</h2>
 
 		<div
 			class={css({
