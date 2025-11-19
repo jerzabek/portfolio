@@ -7,10 +7,26 @@
 	let { data }: { data: PageData } = $props();
 	const { project } = data;
 	const otherProjects = getOtherProjects(project.slug);
+	const pageTitle = `${project.title} | By Ivan Jeržabek`;
 </script>
 
 <svelte:head>
-	<title>{project.title} | By Ivan Jeržabek</title>
+	<title>{pageTitle}</title>
+	<meta name="description" content={project.excerpt} />
+
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content={`https://jarza.cc/projects/${project.slug}`} />
+	<meta property="og:title" content={pageTitle} />
+	<meta property="og:description" content={project.excerpt} />
+	<meta property="og:image" content="/images/headshot.webp" />
+
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image" />
+	<meta property="twitter:url" content={`https://jarza.cc/projects/${project.slug}`} />
+	<meta property="twitter:title" content={pageTitle} />
+	<meta property="twitter:description" content={project.excerpt} />
+	<meta property="twitter:image" content="/images/headshot.webp" />
 </svelte:head>
 
 <div class={css({ maxW: '6xl', mx: 'auto', py: '6' })}>
