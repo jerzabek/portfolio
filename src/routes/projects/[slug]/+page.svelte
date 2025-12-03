@@ -8,6 +8,49 @@
 	const project = $derived(data.project);
 	const otherProjects = $derived(getOtherProjects(project.slug));
 	const pageTitle = $derived(`${project.title} | By Ivan Jeržabek`);
+
+	const schema = $derived({
+		'@context': 'https://schema.org',
+		'@type': 'Article',
+		headline: project.title,
+		name: project.title,
+		description: project.excerpt,
+		image: {
+			'@type': 'ImageObject',
+			url: `https://jarza.cc${project.image}`,
+			width: 1200,
+			height: 630
+		},
+		url: `https://jarza.cc/projects/${project.slug}`,
+		datePublished: '2025-12-01',
+		dateModified: '2025-12-01',
+		author: {
+			'@type': 'Person',
+			name: 'Ivan Jeržabek',
+			givenName: 'Ivan',
+			familyName: 'Jeržabek',
+			url: 'https://jarza.cc',
+			jobTitle: 'Software Engineer',
+			image: 'https://jarza.cc/images/headshot.webp'
+		},
+		publisher: {
+			'@type': 'Person',
+			name: 'Ivan Jeržabek',
+			url: 'https://jarza.cc'
+		},
+		mainEntityOfPage: {
+			'@type': 'WebPage',
+			'@id': `https://jarza.cc/projects/${project.slug}`
+		},
+		keywords: ['Software Engineering', 'Web Development', 'Portfolio Project'],
+		articleSection: 'Technology',
+		inLanguage: 'en',
+		isPartOf: {
+			'@type': 'WebSite',
+			name: 'Ivan Jeržabek Portfolio',
+			url: 'https://jarza.cc'
+		}
+	});
 </script>
 
 <svelte:head>
@@ -27,6 +70,9 @@
 	<meta property="twitter:title" content={pageTitle} />
 	<meta property="twitter:description" content={project.excerpt} />
 	<meta property="twitter:image" content="/images/headshot.webp" />
+
+	<!-- Schema.org structured data -->
+	{@html `<script type="application/ld+json">${JSON.stringify(schema)}</script>`}
 </svelte:head>
 
 <div class={css({ maxW: '6xl', mx: 'auto', py: '6' })}>
