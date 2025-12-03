@@ -9,7 +9,7 @@ services:
     container_name: portfolio
     labels:
       - 'traefik.enable=true'
-      - 'traefik.http.routers.portfolio.rule=Host(`jarza.cc`)'
+      - 'traefik.http.routers.portfolio.rule=Host(`jarza.cc`) || Host(`www.jarza.cc`)'
       - 'traefik.http.routers.portfolio.entrypoints=websecure'
       - 'traefik.http.routers.portfolio.tls=true'
       - 'traefik.http.routers.portfolio.tls.certresolver=letsencrypt'
