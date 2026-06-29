@@ -167,7 +167,7 @@
 				Other Projects
 			</h2>
 
-			<ProjectGrid projects={otherProjects} />
+			<ProjectGrid projects={otherProjects} adIndex={otherProjects.length} />
 		</div>
 	{/if}
 </div>
