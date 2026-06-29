@@ -18,7 +18,8 @@
 		// throws if a slot already has a status. Push only once.
 		if (insEl.getAttribute('data-adsbygoogle-status')) return;
 		try {
-			(window.adsbygoogle = window.adsbygoogle || []).push({});
+			window.adsbygoogle = window.adsbygoogle || [];
+			window.adsbygoogle.push({});
 		} catch (error) {
 			console.error('adsbygoogle push failed', error);
 		}
