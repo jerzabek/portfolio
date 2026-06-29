@@ -1,4 +1,4 @@
-import { css } from 'styled-system/css';
+import { Flex, styled } from 'styled-system/jsx';
 import type { Skill } from '@/lib/entities/project';
 import { Section } from '@/lib/shared/ui';
 
@@ -22,26 +22,24 @@ const skills: Skill[] = [
 export default function Skills() {
 	return (
 		<Section title="Skills" id="skills">
-			<div className={css({ display: 'flex', flexWrap: 'wrap', gap: '3' })}>
+			<Flex wrap="wrap" gap="3">
 				{skills.map((skill) => (
-					<span
+					<styled.span
 						key={skill.name}
-						className={css({
-							px: '4',
-							py: '2',
-							bg: 'surface.muted',
-							color: 'text',
-							fontSize: 'sm',
-							borderRadius: 'full',
-							fontWeight: 'medium',
-							transition: 'all 0.2s',
-							_hover: { bg: 'surface.subtle' }
-						})}
+						px="4"
+						py="2"
+						bg="surface.muted"
+						color="text"
+						fontSize="sm"
+						borderRadius="full"
+						fontWeight="medium"
+						transition="all 0.2s"
+						_hover={{ bg: 'surface.subtle' }}
 					>
 						{skill.name}
-					</span>
+					</styled.span>
 				))}
-			</div>
+			</Flex>
 		</Section>
 	);
 }

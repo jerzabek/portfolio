@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import { css } from 'styled-system/css';
+import { Box, Flex, styled } from 'styled-system/jsx';
 import { Button, ThemeToggle } from '@/lib/shared/ui';
 import { profile } from '../model';
 
@@ -32,86 +32,80 @@ export default function MobileHeader() {
 	}, []);
 
 	return (
-		<header className={css({ hideFrom: 'md', position: 'sticky', top: '0', zIndex: 10 })}>
-			<div
-				className={css({
-					position: 'relative',
-					w: '100%',
-					p: isCompact ? '2' : '4',
-					display: 'flex',
-					flexDirection: 'column',
-					gap: isCompact ? '2' : '4',
-					bg: 'surface',
-					borderBottom: '1px solid',
-					borderColor: 'border',
-					boxShadow: 'sm',
-					transitionProperty: 'all',
-					transitionDuration: 'fastest',
-					transitionTimingFunction: 'ease-out'
-				})}
+		<styled.header hideFrom="md" position="sticky" top="0" zIndex="10">
+			<Flex
+				direction="column"
+				position="relative"
+				w="100%"
+				p={isCompact ? '2' : '4'}
+				gap={isCompact ? '2' : '4'}
+				bg="surface"
+				borderBottom="1px solid"
+				borderColor="border"
+				boxShadow="sm"
+				transitionProperty="all"
+				transitionDuration="fastest"
+				transitionTimingFunction="ease-out"
 			>
-				<div
-					className={css({ display: 'flex', flexDirection: 'row', gap: '4', alignItems: 'center' })}
-				>
+				<Flex direction="row" gap="4" align="center">
 					<motion.div
-						className={css({
-							aspectRatio: '1 / 1',
-							borderRadius: 'lg',
-							overflow: 'hidden',
-							bg: 'surface.muted',
-							flexShrink: 0
-						})}
 						initial={{ opacity: 0, width: 80, height: 80 }}
 						animate={{ opacity: 1, width: isCompact ? 40 : 80, height: isCompact ? 40 : 80 }}
 						transition={compactSpring}
 					>
-						{/* biome-ignore lint/performance/noImgElement: static export, next/image optimization is disabled */}
-						<img
-							src={profile.image}
-							alt={profile.name}
-							className={css({ w: '100%', h: '100%', objectFit: 'cover' })}
-						/>
+						<Box
+							aspectRatio="1 / 1"
+							borderRadius="lg"
+							overflow="hidden"
+							bg="surface.muted"
+							w="100%"
+							h="100%"
+						>
+							<styled.img
+								src={profile.image}
+								alt={profile.name}
+								w="100%"
+								h="100%"
+								objectFit="cover"
+							/>
+						</Box>
 					</motion.div>
 
 					<motion.div
-						className={css({ display: 'flex', flexDirection: 'column', flex: '1' })}
 						initial={{ opacity: 0, x: -20 }}
 						animate={{ opacity: 1, x: 0 }}
 						transition={{ ...spring, delay: 0.3 }}
+						style={{ flex: 1 }}
 					>
-						<h1
-							className={css({
-								fontSize: '2xl',
-								fontWeight: 'bold',
-								lineHeight: 'tight',
-								color: 'text'
-							})}
-						>
-							{profile.name}
-						</h1>
-						<motion.div
-							className={css({ overflow: 'hidden' })}
-							animate={{ height: isCompact ? 0 : 60, opacity: isCompact ? 0 : 1 }}
-							transition={compactSpring}
-						>
-							<p className={css({ fontSize: 'sm', color: 'text.muted', mt: '1' })}>
-								{profile.subtitle}
-							</p>
-							<p className={css({ fontSize: 'sm', color: 'text.subtle', mt: '2' })}>
-								{profile.title}
-							</p>
-						</motion.div>
+						<Flex direction="column">
+							<styled.h1 fontSize="2xl" fontWeight="bold" lineHeight="tight" color="text">
+								{profile.name}
+							</styled.h1>
+							<motion.div
+								animate={{ height: isCompact ? 0 : 60, opacity: isCompact ? 0 : 1 }}
+								transition={compactSpring}
+								style={{ overflow: 'hidden' }}
+							>
+								<styled.p fontSize="sm" color="text.muted" mt="1">
+									{profile.subtitle}
+								</styled.p>
+								<styled.p fontSize="sm" color="text.subtle" mt="2">
+									{profile.title}
+								</styled.p>
+							</motion.div>
+						</Flex>
 					</motion.div>
-				</div>
+				</Flex>
 
-				<motion.div
-					className={css({ position: 'absolute', top: '2', right: '4' })}
-					initial={{ opacity: 0, scale: 0 }}
-					animate={{ opacity: 1, scale: 1 }}
-					transition={{ ...spring, delay: 0.9 }}
-				>
-					<ThemeToggle />
-				</motion.div>
+				<Box position="absolute" top="2" right="4">
+					<motion.div
+						initial={{ opacity: 0, scale: 0 }}
+						animate={{ opacity: 1, scale: 1 }}
+						transition={{ ...spring, delay: 0.9 }}
+					>
+						<ThemeToggle />
+					</motion.div>
+				</Box>
 
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
@@ -122,7 +116,7 @@ export default function MobileHeader() {
 						Contact Me
 					</Button>
 				</motion.div>
-			</div>
-		</header>
+			</Flex>
+		</styled.header>
 	);
 }

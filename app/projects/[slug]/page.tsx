@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { css } from 'styled-system/css';
+import { Box, styled } from 'styled-system/jsx';
 import { getOtherProjectSummaries, getProjectBySlug, projects } from '@/lib/entities/project';
 import { ProjectGrid } from '@/lib/entities/project/ui';
+
+const BackLink = styled(Link);
 
 interface PageProps {
 	params: Promise<{ slug: string }>;
@@ -90,85 +92,59 @@ export default async function ProjectPage({ params }: PageProps) {
 	};
 
 	return (
-		<div className={css({ maxW: '6xl', mx: 'auto', py: '6' })}>
+		<Box maxW="6xl" mx="auto" py="6">
 			<script
 				type="application/ld+json"
 				// biome-ignore lint/security/noDangerouslySetInnerHtml: trusted static JSON-LD structured data
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
 			/>
 
-			<Link
+			<BackLink
 				href="/#projects"
-				className={css({
-					display: 'inline-flex',
-					alignItems: 'center',
-					gap: '2',
-					color: 'text.muted',
-					mb: '8',
-					_hover: { color: 'text' },
-					transition: 'color 0.2s'
-				})}
+				display="inline-flex"
+				alignItems="center"
+				gap="2"
+				color="text.muted"
+				mb="8"
+				_hover={{ color: 'text' }}
+				transition="color 0.2s"
 			>
 				← Back to home
-			</Link>
+			</BackLink>
 
-			<div>
-				<div
-					className={css({
-						w: '100%',
-						h: '96',
-						mb: '12',
-						overflow: 'hidden',
-						borderRadius: 'xl',
-						boxShadow: 'xl'
-					})}
-				>
-					{/* biome-ignore lint/performance/noImgElement: static export, next/image optimization is disabled */}
-					<img
-						src={project.image}
-						alt={project.title}
-						className={css({ w: '100%', h: '100%', objectFit: 'cover' })}
-					/>
-				</div>
-			</div>
+			<Box>
+				<Box w="100%" h="96" mb="12" overflow="hidden" borderRadius="xl" boxShadow="xl">
+					<styled.img src={project.image} alt={project.title} w="100%" h="100%" objectFit="cover" />
+				</Box>
+			</Box>
 
-			<article className={css({ maxW: '4xl', mx: 'auto' })}>
-				<h2 className={css({ fontSize: '4xl', fontWeight: 'bold', mb: '6', color: 'text' })}>
+			<styled.article maxW="4xl" mx="auto">
+				<styled.h2 fontSize="4xl" fontWeight="bold" mb="6" color="text">
 					{project.title}
-				</h2>
+				</styled.h2>
 
-				<div
-					className={css({ fontSize: 'lg', lineHeight: 'relaxed', color: 'text.muted', mb: '12' })}
-				>
+				<Box fontSize="lg" lineHeight="relaxed" color="text.muted" mb="12">
 					<Description />
-				</div>
-			</article>
+				</Box>
+			</styled.article>
 
 			{typeof project.imageAttribution === 'string' && (
-				<div className={css({ width: '100%', textAlign: 'end' })}>
-					<p className={css({ color: 'text.subtle', fontSize: 'xs' })}>
+				<Box width="100%" textAlign="end">
+					<styled.p color="text.subtle" fontSize="xs">
 						{project.imageAttribution}
-					</p>
-				</div>
+					</styled.p>
+				</Box>
 			)}
 
 			{otherProjects.length > 0 && (
-				<div className={css({ mt: '20', pt: '12', borderTop: '1px solid {colors.border}' })}>
-					<h2
-						className={css({
-							fontSize: '2xl',
-							fontWeight: 'bold',
-							mb: '8',
-							textAlign: 'center',
-							color: 'text'
-						})}
-					>
+				<Box mt="20" pt="12" borderTop="1px solid {colors.border}">
+					<styled.h2 fontSize="2xl" fontWeight="bold" mb="8" textAlign="center" color="text">
 						Other Projects
-					</h2>
+					</styled.h2>
 
 					<ProjectGrid projects={otherProjects} adIndex={otherProjects.length} />
-				</div>
+				</Box>
 			)}
-		</div>
+		</Box>
 	);
 }

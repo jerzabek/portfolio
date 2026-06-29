@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { css } from 'styled-system/css';
+import { Grid } from 'styled-system/jsx';
 import { AdCard } from '@/lib/entities/ad';
 import type { ProjectSummary } from '@/lib/entities/project';
 import ProjectCard from './ProjectCard';
@@ -22,13 +22,7 @@ export default function ProjectGrid({ projects, adIndex }: Props) {
 	}
 
 	return (
-		<div
-			className={css({
-				display: 'grid',
-				gridTemplateColumns: { base: '1fr', md: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' },
-				gap: '4'
-			})}
-		>
+		<Grid columns={{ base: 1, md: 2, lg: 3 }} gap="4">
 			{items.map((item, i) => (
 				<motion.div
 					key={item.type === 'project' ? item.project.id : 'ad-card'}
@@ -39,6 +33,6 @@ export default function ProjectGrid({ projects, adIndex }: Props) {
 					{item.type === 'project' ? <ProjectCard project={item.project} /> : <AdCard />}
 				</motion.div>
 			))}
-		</div>
+		</Grid>
 	);
 }

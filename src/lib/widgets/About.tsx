@@ -1,19 +1,10 @@
-import { css } from 'styled-system/css';
+import { Flex } from 'styled-system/jsx';
 import { Section } from '@/lib/shared/ui';
 
 export default function About() {
 	return (
 		<Section title="About" id="about">
-			<div
-				className={css({
-					display: 'flex',
-					flexDirection: 'column',
-					gap: '4',
-					fontSize: 'base',
-					lineHeight: 'relaxed',
-					color: 'text.muted'
-				})}
-			>
+			<Flex direction="column" gap="4" fontSize="base" lineHeight="relaxed" color="text.muted">
 				<p>
 					I am a software engineer passionate about technology and doing it for the craft. I love
 					diving into technical niches and solving complex problems. I live for the fact that
@@ -29,7 +20,7 @@ export default function About() {
 					aspect of software development. I focus on frontend development, with a strong interest in
 					devops.
 				</p>
-			</div>
+			</Flex>
 		</Section>
 	);
 }

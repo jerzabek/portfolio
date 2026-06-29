@@ -1,8 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 import type { ReactNode } from 'react';
-import { css } from 'styled-system/css';
-import { container } from 'styled-system/patterns';
+import { Box, Container, styled } from 'styled-system/jsx';
 import { ThemeProvider } from '@/lib/shared/theme';
 import { CustomCursor } from '@/lib/shared/ui';
 import { Sidebar } from '@/lib/widgets/Sidebar';
@@ -55,30 +54,24 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 				<ThemeProvider>
 					<CustomCursor />
 
-					<div className={css({ bg: 'bg', minH: '100vh' })}>
-						<div className={container({ px: '0' })}>
-							<div
-								className={css({
-									display: 'grid',
-									gridTemplateColumns: { base: '1fr', md: '1fr 3fr' },
-									minH: '100vh'
-								})}
-							>
+					<Box bg="bg" minH="100vh">
+						<Container px="0">
+							<Box display="grid" gridTemplateColumns={{ base: '1fr', md: '1fr 3fr' }} minH="100vh">
 								<Sidebar />
-								<main
-									className={css({
-										maxW: '100%',
-										px: { base: '6', md: '12' },
-										py: '12',
-										overflowY: 'auto',
-										bg: 'bg'
-									})}
+								<styled.main
+									maxW="100%"
+									px={{ base: '6', md: '12' }}
+									py="12"
+									overflowY="auto"
+									bg="bg"
 								>
-									<div className={css({ maxW: '7xl', mx: 'auto' })}>{children}</div>
-								</main>
-							</div>
-						</div>
-					</div>
+									<Box maxW="7xl" mx="auto">
+										{children}
+									</Box>
+								</styled.main>
+							</Box>
+						</Container>
+					</Box>
 				</ThemeProvider>
 			</body>
 		</html>

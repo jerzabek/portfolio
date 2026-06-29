@@ -1,4 +1,4 @@
-import { css } from 'styled-system/css';
+import { Box, Flex, styled } from 'styled-system/jsx';
 import type { Experience as ExperienceEntry } from '@/lib/entities/project';
 import { Section } from '@/lib/shared/ui';
 
@@ -31,74 +31,60 @@ const experiences: ExperienceEntry[] = [
 export default function Experience() {
 	return (
 		<Section title="Experience" id="experience">
-			<div className={css({ display: 'flex', flexDirection: 'column', gap: '4' })}>
+			<Flex direction="column" gap="4">
 				{experiences.map((exp) => (
-					<div
+					<Flex
 						key={exp.company}
-						className={css({
-							p: '6',
-							bg: 'surface.muted',
-							borderRadius: 'xl',
-							display: 'flex',
-							gap: '4',
-							transition: 'all 0.2s',
-							_hover: { bg: 'surface.subtle' }
-						})}
+						p="6"
+						bg="surface.muted"
+						borderRadius="xl"
+						gap="4"
+						transition="all 0.2s"
+						_hover={{ bg: 'surface.subtle' }}
 					>
-						<div
-							className={css({
-								w: '12',
-								h: '12',
-								p: '2',
-								borderRadius: 'sm',
-								bg: exp.image ? '#fff' : 'transparent',
-								display: 'flex',
-								alignItems: 'center',
-								justifyContent: 'center',
-								fontSize: 'xl',
-								color: 'text'
-							})}
+						<Flex
+							w="12"
+							h="12"
+							p="2"
+							borderRadius="sm"
+							bg={exp.image ? '#fff' : 'transparent'}
+							align="center"
+							justify="center"
+							fontSize="xl"
+							color="text"
 						>
 							{exp.image && (
-								// biome-ignore lint/performance/noImgElement: static export, next/image optimization is disabled
-								<img
+								<styled.img
 									src={exp.image}
 									alt={exp.company}
-									className={css({ w: '100%', h: '100%', objectFit: 'contain' })}
+									w="100%"
+									h="100%"
+									objectFit="contain"
 								/>
 							)}
-						</div>
+						</Flex>
 
-						<div className={css({ flex: '1' })}>
-							<div
-								className={css({
-									display: 'flex',
-									justifyContent: 'space-between',
-									alignItems: 'start',
-									mb: '2',
-									flexWrap: 'wrap',
-									gap: '2'
-								})}
-							>
-								<div>
-									<h3 className={css({ fontSize: 'lg', fontWeight: 'bold', color: 'text' })}>
+						<Box flex="1">
+							<Flex justify="space-between" align="start" mb="2" wrap="wrap" gap="2">
+								<Box>
+									<styled.h3 fontSize="lg" fontWeight="bold" color="text">
 										{exp.company}
-									</h3>
-									<p className={css({ fontSize: 'sm', color: 'text.muted' })}>{exp.position}</p>
-								</div>
-								<span
-									className={css({ fontSize: 'xs', color: 'text.subtle', whiteSpace: 'nowrap' })}
-								>
+									</styled.h3>
+									<styled.p fontSize="sm" color="text.muted">
+										{exp.position}
+									</styled.p>
+								</Box>
+								<styled.span fontSize="xs" color="text.subtle" whiteSpace="nowrap">
 									{exp.period}
-								</span>
-							</div>
-							<p className={css({ color: 'text.muted', fontSize: 'sm', lineHeight: 'relaxed' })}>
+								</styled.span>
+							</Flex>
+							<styled.p color="text.muted" fontSize="sm" lineHeight="relaxed">
 								{exp.description}
-							</p>
-						</div>
-					</div>
+							</styled.p>
+						</Box>
+					</Flex>
 				))}
-			</div>
+			</Flex>
 		</Section>
 	);
 }

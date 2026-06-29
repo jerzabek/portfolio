@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { css } from 'styled-system/css';
+import { styled } from 'styled-system/jsx';
 
 interface Props {
 	title?: string;
@@ -9,25 +9,20 @@ interface Props {
 
 export default function Section({ title, id, children }: Props) {
 	return (
-		<section
-			id={id}
-			className={css({ py: '12', borderBottom: '1px solid', borderColor: 'border.muted' })}
-		>
+		<styled.section id={id} py="12" borderBottom="1px solid" borderColor="border.muted">
 			{title && (
-				<h2
-					className={css({
-						fontSize: 'xs',
-						fontWeight: 'bold',
-						mb: '6',
-						color: 'text.subtle',
-						letterSpacing: 'wider',
-						textTransform: 'uppercase'
-					})}
+				<styled.h2
+					fontSize="xs"
+					fontWeight="bold"
+					mb="6"
+					color="text.subtle"
+					letterSpacing="wider"
+					textTransform="uppercase"
 				>
 					{title}
-				</h2>
+				</styled.h2>
 			)}
 			{children}
-		</section>
+		</styled.section>
 	);
 }

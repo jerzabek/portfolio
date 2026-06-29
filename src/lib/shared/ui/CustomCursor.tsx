@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { css } from 'styled-system/css';
+import { Box } from 'styled-system/jsx';
 
 export default function CustomCursor() {
 	const [hasCursor, setHasCursor] = useState(false);
@@ -58,39 +58,35 @@ export default function CustomCursor() {
 			{hasCursor && (
 				<>
 					{/* Small dot at cursor position */}
-					<div
+					<Box
 						ref={dotRef}
-						className={css({
-							hideBelow: 'md',
-							position: 'fixed',
-							width: '8px',
-							height: '8px',
-							borderRadius: 'full',
-							bg: 'white',
-							pointerEvents: 'none',
-							zIndex: 9999,
-							mixBlendMode: 'difference'
-						})}
-						style={{ transform: 'translate(-50%, -50%)' }}
+						hideBelow="md"
+						position="fixed"
+						width="8px"
+						height="8px"
+						borderRadius="full"
+						bg="white"
+						pointerEvents="none"
+						zIndex="9999"
+						mixBlendMode="difference"
+						transform="translate(-50%, -50%)"
 					/>
 
 					{/* Trailing circle */}
-					<div
+					<Box
 						ref={trailRef}
-						className={css({
-							hideBelow: 'md',
-							position: 'fixed',
-							width: '40px',
-							height: '40px',
-							border: '2px solid',
-							borderColor: 'white',
-							borderRadius: 'full',
-							pointerEvents: 'none',
-							zIndex: 9998,
-							mixBlendMode: 'difference',
-							transition: 'width 0.2s, height 0.2s'
-						})}
-						style={{ transform: 'translate(-50%, -50%)' }}
+						hideBelow="md"
+						position="fixed"
+						width="40px"
+						height="40px"
+						border="2px solid"
+						borderColor="white"
+						borderRadius="full"
+						pointerEvents="none"
+						zIndex="9998"
+						mixBlendMode="difference"
+						transition="width 0.2s, height 0.2s"
+						transform="translate(-50%, -50%)"
 					/>
 				</>
 			)}

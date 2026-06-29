@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { css } from 'styled-system/css';
+import { styled } from 'styled-system/jsx';
 
 interface Props {
 	variant?: 'filled' | 'outline';
@@ -9,39 +9,6 @@ interface Props {
 	children?: ReactNode;
 }
 
-const baseStyles = css({
-	px: '6',
-	py: '3',
-	borderRadius: 'md',
-	fontWeight: 'medium',
-	cursor: 'pointer',
-	display: 'inline-block',
-	textDecoration: 'none',
-	border: '2px solid',
-	fontSize: 'sm',
-	w: '100%',
-	textAlign: 'center',
-	transition: 'all {durations.normal}',
-	_hover: {
-		transform: 'scale(1.02)'
-	},
-	_active: {
-		transform: 'scale(0.98)'
-	}
-});
-
-const filledStyles = css({
-	bg: 'text',
-	color: 'surface',
-	borderColor: 'text'
-});
-
-const outlineStyles = css({
-	bg: 'transparent',
-	color: 'text',
-	borderColor: 'text'
-});
-
 export default function Button({
 	variant = 'filled',
 	href,
@@ -49,19 +16,58 @@ export default function Button({
 	onClick,
 	children
 }: Props) {
-	const buttonClass = `${baseStyles} ${variant === 'filled' ? filledStyles : outlineStyles}`;
+	const bg = variant === 'filled' ? 'text' : 'transparent';
+	const color = variant === 'filled' ? 'surface' : 'text';
 
 	if (href) {
 		return (
-			<a href={href} className={buttonClass}>
+			<styled.a
+				href={href}
+				px="6"
+				py="3"
+				borderRadius="md"
+				fontWeight="medium"
+				cursor="pointer"
+				display="inline-block"
+				textDecoration="none"
+				border="2px solid"
+				borderColor="text"
+				fontSize="sm"
+				w="100%"
+				textAlign="center"
+				transition="all {durations.normal}"
+				bg={bg}
+				color={color}
+				_hover={{ transform: 'scale(1.02)' }}
+				_active={{ transform: 'scale(0.98)' }}
+			>
 				{children}
-			</a>
+			</styled.a>
 		);
 	}
 
 	return (
-		<button type={type} onClick={onClick} className={buttonClass}>
+		<styled.button
+			type={type}
+			onClick={onClick}
+			px="6"
+			py="3"
+			borderRadius="md"
+			fontWeight="medium"
+			cursor="pointer"
+			display="inline-block"
+			border="2px solid"
+			borderColor="text"
+			fontSize="sm"
+			w="100%"
+			textAlign="center"
+			transition="all {durations.normal}"
+			bg={bg}
+			color={color}
+			_hover={{ transform: 'scale(1.02)' }}
+			_active={{ transform: 'scale(0.98)' }}
+		>
 			{children}
-		</button>
+		</styled.button>
 	);
 }

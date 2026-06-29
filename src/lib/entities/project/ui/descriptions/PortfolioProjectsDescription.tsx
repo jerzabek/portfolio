@@ -1,8 +1,8 @@
-import { css } from 'styled-system/css';
+import { Flex, styled } from 'styled-system/jsx';
 
 export default function PortfolioProjectsDescription() {
 	return (
-		<div className={css({ display: 'flex', flexDirection: 'column', gap: '4' })}>
+		<Flex direction="column" gap="4">
 			<p>
 				Having a four day long weekend gave me the perfect opportunity to finally update my
 				portfolio website, which had previously been unattended for six whole years!
@@ -23,14 +23,16 @@ export default function PortfolioProjectsDescription() {
 				You are looking at the results of that effort, I think it turned out pretty well, if I do
 				say so myself.
 			</p>
-			<h3 className={css({ fontWeight: 'bold', fontSize: '2xl', mt: '4' })}>Tech stack</h3>
-			<ul className={css({ listStyleType: 'disc', pl: '8', spaceY: '2' })}>
+			<styled.h3 fontWeight="bold" fontSize="2xl" mt="4">
+				Tech stack
+			</styled.h3>
+			<styled.ul listStyleType="disc" pl="8" spaceY="2">
 				<li>Svelte</li>
 				<li>SvelteKit</li>
 				<li>Panda CSS</li>
 				<li>Containerized using Docker</li>
 				<li>Deployed using Docker Compose and Traefik on my own VPS</li>
-			</ul>
-		</div>
+			</styled.ul>
+		</Flex>
 	);
 }

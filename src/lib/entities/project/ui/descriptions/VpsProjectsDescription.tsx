@@ -1,10 +1,8 @@
-import { css } from 'styled-system/css';
-
-const diagramImageStyles = css({ mx: 'auto', maxWidth: '700px', width: '100%', height: 'auto' });
+import { Box, Flex, styled } from 'styled-system/jsx';
 
 export default function VpsProjectsDescription() {
 	return (
-		<div className={css({ display: 'flex', flexDirection: 'column', gap: '4' })}>
+		<Flex direction="column" gap="4">
 			<p>
 				As a kid I spent my time playing video games with my friends, and from time to time we would
 				play something together that required a multiplayer server of our own. Whether it was
@@ -32,23 +30,27 @@ export default function VpsProjectsDescription() {
 				like this:
 			</p>
 
-			<div className={css({ _dark: { display: 'none' } })}>
-				{/* biome-ignore lint/performance/noImgElement: static export, next/image optimization is disabled */}
-				<img
+			<Box _dark={{ display: 'none' }}>
+				<styled.img
 					src="/images/vps-diagram.webp"
 					alt="Self managed VPS diagram"
-					className={diagramImageStyles}
+					mx="auto"
+					maxWidth="700px"
+					width="100%"
+					height="auto"
 				/>
-			</div>
+			</Box>
 
-			<div className={css({ display: 'none', _dark: { display: 'block' } })}>
-				{/* biome-ignore lint/performance/noImgElement: static export, next/image optimization is disabled */}
-				<img
+			<Box display="none" _dark={{ display: 'block' }}>
+				<styled.img
 					src="/images/vps-diagram-dark.webp"
 					alt="Self managed VPS diagram"
-					className={diagramImageStyles}
+					mx="auto"
+					maxWidth="700px"
+					width="100%"
+					height="auto"
 				/>
-			</div>
+			</Box>
 
 			<p>
 				Root user disabled, proper firewall setup, secure SSH access in place, two-factor
@@ -64,9 +66,9 @@ export default function VpsProjectsDescription() {
 
 			<p>As they say,</p>
 
-			<div className={css({ pl: '8', py: '2', fontSize: 'xl' })}>
+			<Box pl="8" py="2" fontSize="xl">
 				<cite>"Za koga je, dobro je"</cite>
-			</div>
+			</Box>
 
 			<p>
 				Which translates to <em>"For whom it is, it is good"</em>.
@@ -80,6 +82,6 @@ export default function VpsProjectsDescription() {
 				Certainly if anything, this is a great learning experience and an extremely entertaining
 				hobby.
 			</p>
-		</div>
+		</Flex>
 	);
 }
