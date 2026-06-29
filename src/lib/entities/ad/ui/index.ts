@@ -1,1 +1,1 @@
-export { default as AdCard } from './AdCard.svelte';
+export { default as AdCard } from './AdCard';

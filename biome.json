@@ -3,7 +3,7 @@
 	"vcs": { "enabled": true, "clientKind": "git", "useIgnoreFile": true },
 	"files": {
 		"ignoreUnknown": true,
-		"includes": ["**", "!**/*.svg", "!static"]
+		"includes": ["**", "!**/*.svg", "!public", "!styled-system", "!.next", "!out"]
 	},
 	"formatter": {
 		"enabled": true,
@@ -23,8 +23,7 @@
 			"!**/pnpm-lock.yaml",
 			"!**/yarn.lock",
 			"!**/bun.lock",
-			"!**/bun.lockb",
-			"!./static/"
+			"!**/bun.lockb"
 		]
 	},
 	"linter": { "enabled": true, "rules": { "preset": "recommended" } },
@@ -50,19 +49,5 @@
 	"assist": {
 		"enabled": true,
 		"actions": { "source": { "organizeImports": "off" } }
-	},
-	"overrides": [
-		{
-			"includes": ["**/*.svelte"],
-			"formatter": { "enabled": false },
-			"linter": {
-				"rules": {
-					"correctness": {
-						"noUnusedImports": "off",
-						"noUnusedVariables": "off"
-					}
-				}
-			}
-		}
-	]
+	}
 }

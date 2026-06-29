@@ -5,7 +5,9 @@ export default defineConfig({
 
 	preflight: true,
 
-	include: ['./src/**/*.{js,ts,svelte}'],
+	jsxFramework: 'react',
+
+	include: ['./src/**/*.{js,jsx,ts,tsx}', './app/**/*.{js,jsx,ts,tsx}'],
 
 	exclude: [],
 

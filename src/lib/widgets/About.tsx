@@ -1,0 +1,26 @@
+import { Flex } from 'styled-system/jsx';
+import { Section } from '@/lib/shared/ui';
+
+export default function About() {
+	return (
+		<Section title="About" id="about">
+			<Flex direction="column" gap="4" fontSize="base" lineHeight="relaxed" color="text.muted">
+				<p>
+					I am a software engineer passionate about technology and doing it for the craft. I love
+					diving into technical niches and solving complex problems. I live for the fact that
+					elegance is accomplishing a complex task in a simple manner.
+				</p>
+				<p>
+					I hold a master's degree from the University of Zagreb in the science of computing and
+					have been working in the software industry since my late teens, showing interest in
+					programming since my earliest teens.
+				</p>
+				<p>
+					Throughout both my professional, academic and personal projects I have worked on every
+					aspect of software development. I focus on frontend development, with a strong interest in
+					devops.
+				</p>
+			</Flex>
+		</Section>
+	);
+}
