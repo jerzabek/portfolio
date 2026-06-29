@@ -5,5 +5,5 @@
 </script>
 
 <Section title="Projects" id="projects">
-	<ProjectGrid {projects} />
+	<ProjectGrid {projects} adIndex={projects.length} />
 </Section>
