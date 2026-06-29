@@ -13,5 +13,6 @@
 html,
 body {
 	min-height: 100vh;
+	/* biome-ignore lint/suspicious/noDuplicateProperties: intentional fallback before the custom-property value */
 	min-height: calc(var(--vh, 1vh) * 100);
 }
