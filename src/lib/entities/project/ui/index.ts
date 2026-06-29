@@ -1,2 +1,2 @@
-export { default as ProjectCard } from './ProjectCard.svelte';
-export { default as ProjectGrid } from './ProjectGrid.svelte';
+export { default as ProjectCard } from './ProjectCard';
+export { default as ProjectGrid } from './ProjectGrid';

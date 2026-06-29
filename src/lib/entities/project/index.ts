@@ -1,2 +1,7 @@
-export { projects, getProjectBySlug, getOtherProjects } from './model';
-export type { Project, Experience, Skill } from './types';
+export {
+	projects,
+	getProjectBySlug,
+	getProjectSummaries,
+	getOtherProjectSummaries
+} from './model';
+export type { Project, ProjectSummary, Experience, Skill } from './types';

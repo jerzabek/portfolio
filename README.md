@@ -1,38 +1,36 @@
-# sv
+# portfolio
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Personal portfolio site — [jarza.cc](https://jarza.cc).
 
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```sh
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
-```
+Built with [Next.js](https://nextjs.org) (App Router, static export), [Panda CSS](https://panda-css.com),
+[Framer Motion](https://www.framer.com/motion/) and TypeScript. Linted and formatted with
+[Biome](https://biomejs.dev).
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
 ```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+yarn install   # also runs `panda codegen` via the prepare script
+yarn dev       # start the dev server
 ```
 
 ## Building
 
-To create a production version of your app:
+The site is a fully static export (`output: 'export'`), emitted to `out/`:
 
 ```sh
-npm run build
+yarn build     # panda codegen + next build
+yarn preview   # serve the static export locally
 ```
 
-You can preview the production build with `npm run preview`.
+## Quality
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+```sh
+yarn check     # type-check (tsc --noEmit)
+yarn lint      # biome check
+yarn format    # biome format --write
+```
+
+## Deploying
+
+The `Dockerfile` builds the static export and serves `out/` with [`serve`](https://github.com/vercel/serve);
+`compose.yml` runs it behind Traefik on a VPS.

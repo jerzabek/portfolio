@@ -5,8 +5,10 @@ node_modules
 .vercel
 .netlify
 .wrangler
-/.svelte-kit
+/.next
+/out
 /build
+next-env.d.ts
 
 # OS
 .DS_Store

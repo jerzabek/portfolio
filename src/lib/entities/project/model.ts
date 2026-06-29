@@ -1,6 +1,6 @@
-import type { Project } from './types';
-import VpsProjectsDescription from './ui/descriptions/VpsProjectsDescription.svelte';
-import PortfolioProjectsDescription from './ui/descriptions/PortfolioProjectsDescription.svelte';
+import type { Project, ProjectSummary } from './types';
+import PortfolioProjectsDescription from './ui/descriptions/PortfolioProjectsDescription';
+import VpsProjectsDescription from './ui/descriptions/VpsProjectsDescription';
 
 export const projects: Project[] = [
 	{
@@ -25,10 +25,19 @@ export const projects: Project[] = [
 	}
 ];
 
+const toSummary = ({ id, slug, title, excerpt, image }: Project): ProjectSummary => ({
+	id,
+	slug,
+	title,
+	excerpt,
+	image
+});
+
 export const getProjectBySlug = (slug: string): Project | undefined => {
 	return projects.find((p) => p.slug === slug);
 };
 
-export const getOtherProjects = (currentSlug: string): Project[] => {
-	return projects.filter((p) => p.slug !== currentSlug);
-};
+export const getProjectSummaries = (): ProjectSummary[] => projects.map(toSummary);
+
+export const getOtherProjectSummaries = (currentSlug: string): ProjectSummary[] =>
+	projects.filter((p) => p.slug !== currentSlug).map(toSummary);
